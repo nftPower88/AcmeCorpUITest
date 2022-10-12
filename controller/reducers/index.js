@@ -54,7 +54,6 @@ export const walletManager = (state = initialState, action) => {
             from: action.from
         }
     case UPDATE_ROLE:
-        console.log(action.result)
         return {
             ...state,
             role: action.result,

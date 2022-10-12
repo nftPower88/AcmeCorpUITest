@@ -76,7 +76,6 @@ export const closing_mint = (isServer) => {
 }
 
 export const update_role = (isServer, role) => {
-  console.log(isServer, role)
   return dispatch => {
     dispatch({
       type: UPDATE_ROLE,
