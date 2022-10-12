@@ -1,0 +1,8 @@
+export const CONNECTING = 'CONNECTING';
+export const CONNECT_SUCCESS = 'CONNECT_SUCCESS';
+export const DISCONNECTING = 'DISCONNECTING';
+export const OPEN_MINT = 'OPEN_MINT';
+export const CLOSE_MINT = 'CLOSE_MINT';
+export const ATTEMP_CONNECTING = 'ATTEMP_CONNECTING';
+export const UPDATE_ROLE = 'UPDATE_ROLE';
+export const DELETE_ROLE = 'DELETE_ROLE';

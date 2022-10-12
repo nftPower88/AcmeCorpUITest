@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: rgb(255, 255, 255);
+  font-family: Castelar, sans-serif;
+}
+
+.main_bg {
+  background: rgb(255, 255, 255);
+}
+
+.btn_primary {
+  background: rgb(39, 145, 230);
+  background: linear-gradient(
+    193deg,
+    rgba(39, 145, 230, 1) 15%,
+    rgb(10, 106, 184) 89%
+  );
+}
+
+.btn_primary_outline {
+  background: transparent;
+  border: 3px solid
+    linear-gradient(
+      193deg,
+      rgba(39, 145, 230, 1) 15%,
+      rgb(10, 106, 184) 89%
+    );
+}
+
+.btn_secondary {
+  background: rgb(180, 180, 180);
+  background: linear-gradient(
+    193deg,
+    rgb(180, 180, 180) 15%,
+    rgb(88, 88, 88) 89%
+  );
+}
+
+.btn_secondary_outline {
+  background: transparent;
+  border: 3px solid
+    linear-gradient(
+      193deg,
+      rgb(180, 180, 180) 15%,
+      rgb(88, 88, 88) 89%
+    );
+}
+
+.square_btn {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 8px 10px 5px 10px;
+  text-decoration: none;
+  color: #5598BF;
+  background: #FFF1DA;
+  border-bottom: solid 4px #5598BF;
+  border-radius: 15px 15px 0 0;
+}
+
+.square_btn span {
+  display:inline-block;
+  transition: .5s}
+
+.square_btn:hover span{
+  -webkit-transform: rotateX(360deg);
+  -ms-transform: rotateX(360deg);
+  transform: rotateX(360deg);
+}
+
+.square_btn:disabled{
+  border-bottom: solid 4px #888888;
+}
+
+.square_btn:disabled span{
+  transform: none;
+  opacity: 0.5;
+  color: #888888;
+}
