@@ -1,3 +1,1 @@
-export const CONTRACT_ADDRESS = "0x537155f1bAD2697cA69E9d8b6bD4E94237DB8268"; // rinkeby test net
-//export const CONTRACT_ADDRESS = "0xd6e07dfb04546F76A4446F7261f38586Ec4dae21"; // ropsten test net
-export const PUGS_NFT_COUNT = 345;//4444;
+export const CONTRACT_ADDRESS = "0x24d27AA3e8ed7AC3aD906Aa7f8ca2a747e868eA9"; // Goerli testnet
