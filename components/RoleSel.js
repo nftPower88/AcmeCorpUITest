@@ -32,10 +32,9 @@ const RoleSel = ({
 
   return (
     <div
-      className={`select-none w-[100%] h-[100%] px-10 py-10 flex flex-rows justify-center text-black text-sm ${className}`}
+      className={`select-none w-[100%] h-[100%] px-10 py-10 flex flex-row justify-center text-black text-sm ${className}`}
     >
       <form className="space-y-4 w-[50%]" action="#" ref={formRef}>
-
         <div>
           <input
             type="text"
@@ -53,6 +52,10 @@ const RoleSel = ({
             placeholder="Password"
             required
           />
+        </div>
+        <div className='py-10'>
+          <div>Manager: username: manager // password: manager</div>
+          <div>Customer: username: customer // password: customer</div>
         </div>
         <button
           type="submit"
