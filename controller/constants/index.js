@@ -6,3 +6,5 @@ export const CLOSE_MINT = 'CLOSE_MINT';
 export const ATTEMP_CONNECTING = 'ATTEMP_CONNECTING';
 export const UPDATE_ROLE = 'UPDATE_ROLE';
 export const DELETE_ROLE = 'DELETE_ROLE';
+export const UPDATE_PARAMS = 'UPDATE_PARAMS';
+export const DELETE_PARAMS = 'DELETE_PARAMS';

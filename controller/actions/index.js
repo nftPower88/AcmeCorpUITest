@@ -1,7 +1,8 @@
-import { CONNECT_SUCCESS, DISCONNECTING, OPEN_MINT, CLOSE_MINT, UPDATE_ROLE, DELETE_ROLE } from '../constants';
+import { CONNECT_SUCCESS, DISCONNECTING, OPEN_MINT, CLOSE_MINT, UPDATE_ROLE, DELETE_ROLE, UPDATE_PARAMS, DELETE_PARAMS } from '../constants';
 import Web3 from "web3";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getParmas } from "../../utils/contractServices";
 
 toast.configure();
 export const connecting = (isServer) => {
@@ -14,7 +15,7 @@ export const connecting = (isServer) => {
         }
 
         window.ethereum.enable().then(function (accounts) {
-            window.web3.eth.net.getNetworkType().then((network) => {
+            window.web3.eth.net.getNetworkType().then(async (network) => {
                 if(network != "goerli"){
                   toast.warning("You are on " + network+ " network. Change network to goerli or you won't be able to do anything here");
                   dispatch(connect_success({connecting: false, connect: false, address: null}, isServer));
@@ -24,7 +25,12 @@ export const connecting = (isServer) => {
                 web3.eth.getBalance(wallet).then((res) => {
                   console.log(res);
                   dispatch(connect_success({connecting: false, connect: true, address: wallet, balance: res}, isServer));
-                });                
+                });   
+                
+                const params = await getParmas();
+                if (params) {
+                  dispatch(update_params(isServer, params));
+                }
             }).catch(function (err) {
                 console.log(err);
             });  
@@ -94,3 +100,25 @@ export const delete_role = (isServer) => {
     })
   }
 }
+
+
+export const update_params = (isServer, params) => {
+  return dispatch => {
+    dispatch({
+      type: UPDATE_PARAMS,
+      result: params,
+      from: isServer ? 'server' : 'client'
+    })
+  }
+}
+
+export const delete_params = (isServer) => {
+  return dispatch => {
+    dispatch({
+      type: DELETE_PARAMS,
+      result: '',
+      from: isServer ? 'server' : 'client'
+    })
+  }
+}
+

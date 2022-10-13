@@ -1,6 +1,9 @@
 import { CONTRACT_ADDRESS } from "./constants";
 import ContractABI from "../contracts/WidgetsFactory.json";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+toast.configure();
 export const addStock = async (account, amount) => {
     const contract = new window.web3.eth.Contract(ContractABI.abi, CONTRACT_ADDRESS);
     
@@ -21,7 +24,8 @@ export const order = async (account, amount) => {
         await contract.methods.OrderPurchase(account, amount).send({from: account, value: price, gas: String(gasAmount)})
         await contract.OrderPurchase(account, amount);
     } catch(e) {
-        console.log(e)
+        // console.log(e)
+        toast.error(e.message);
     }
 }
 
@@ -34,5 +38,20 @@ export const ship = async (account) => {
         await contract.methods.OrderShip().send({from: account, gas: String(gasAmount)})
     } catch(e) {
         console.log(e)
+    }
+}
+
+export const getParmas = async (account) => {
+    const contract = new window.web3.eth.Contract(ContractABI.abi, CONTRACT_ADDRESS);
+
+    try {
+        const stockamount = await contract.methods._getAmount().call();
+        const lastid = await contract.methods._lastShipedOrder().call();
+        const currid = await contract.methods._currentOrderId().call();
+
+        return {stockamount, currid, lastid};
+    } catch(e) {
+        console.log(e)
+        return null;
     }
 }

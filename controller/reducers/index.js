@@ -1,4 +1,4 @@
-import { CONNECT_SUCCESS, DISCONNECTING, OPEN_MINT, CLOSE_MINT, UPDATE_ROLE, DELETE_ROLE } from '../constants';
+import { CONNECT_SUCCESS, DISCONNECTING, OPEN_MINT, CLOSE_MINT, UPDATE_ROLE, DELETE_ROLE, UPDATE_PARAMS, DELETE_PARAMS } from '../constants';
 import { HYDRATE } from 'next-redux-wrapper';
 
 export const initialState = {
@@ -10,6 +10,9 @@ export const initialState = {
   from: null,
   connecting: false,
   role: '',
+  stockamount: 0,
+  lastid: 0,
+  currid: 0,
 }
 
 export const walletManager = (state = initialState, action) => {
@@ -65,6 +68,25 @@ export const walletManager = (state = initialState, action) => {
             ...state,
             role: '',
             action: 'delete_role',
+            from: action.from
+        }
+    case UPDATE_PARAMS:
+        return {
+            ...state,
+            stockamount: action.result.stockamount,
+            lastid: action.result.lastid,
+            currid: action.result.currid,
+            action: 'update_params',
+            from: action.from
+        }
+    case DELETE_PARAMS:
+        return {
+            ...state,
+            role: '',
+            stockamount: 0,
+            lastid: 0,
+            currid: 0,
+            action: 'delete_params',
             from: action.from
         }
     default:
