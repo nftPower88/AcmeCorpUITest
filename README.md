@@ -7,7 +7,7 @@ https://acmefactorytest.netlify.app/
 # Setup
 npm install (yarn)
 
-# Smart Contract
+# Working
 - run on local:
   npm run dev (yarn dev)
 
